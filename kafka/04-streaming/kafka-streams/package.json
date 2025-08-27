@@ -1,0 +1,24 @@
+{
+  "name": "kafka-streams-examples",
+  "version": "1.0.0",
+  "description": "Kafka Streams 학습 예제",
+  "type": "module",
+  "scripts": {
+    "basic": "node basic-stream.js",
+    "window": "node windowing.js",
+    "join": "node join-example.js",
+    "aggregate": "node aggregation.js"
+  },
+  "dependencies": {
+    "kafka-streams": "^5.0.0",
+    "kafkajs": "^2.2.4",
+    "uuid": "^9.0.1"
+  },
+  "keywords": [
+    "kafka",
+    "streams",
+    "real-time",
+    "processing"
+  ],
+  "license": "MIT"
+}
