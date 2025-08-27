@@ -19,7 +19,7 @@
 # kafka/01-setup 디렉토리로 이동
 cd kafka/01-setup
 
-# Docker Compose로 전체 스택 시작
+# Docker Compose로 전체 스택 d1
 docker-compose up -d
 
 # 서비스 상태 확인

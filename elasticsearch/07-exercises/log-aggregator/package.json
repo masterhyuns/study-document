@@ -1,0 +1,26 @@
+{
+  "name": "log-aggregator",
+  "version": "1.0.0",
+  "description": "Log aggregation and analysis system with Elasticsearch",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "collector": "node collectors/log-collector.js",
+    "analyzer": "node analyzers/log-analyzer.js",
+    "test": "jest"
+  },
+  "dependencies": {
+    "@elastic/elasticsearch": "^8.11.0",
+    "express": "^4.18.2",
+    "winston": "^3.11.0",
+    "winston-elasticsearch": "^0.17.4",
+    "tail": "^2.2.6",
+    "node-schedule": "^2.1.1",
+    "dotenv": "^16.3.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1",
+    "jest": "^29.7.0"
+  }
+}

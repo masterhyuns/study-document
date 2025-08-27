@@ -1,0 +1,37 @@
+# Logstash Configuration
+# ======================
+
+# Node Settings
+node.name: logstash-docker
+
+# Pipeline Settings
+pipeline.workers: 2
+pipeline.batch.size: 125
+pipeline.batch.delay: 50
+pipeline.ordered: auto
+
+# Pipeline Configuration
+path.config: /usr/share/logstash/pipeline
+
+# Queue Settings
+queue.type: memory
+queue.max_bytes: 1gb
+queue.checkpoint.writes: 1024
+
+# Dead Letter Queue
+dead_letter_queue.enable: false
+dead_letter_queue.max_bytes: 1gb
+
+# Metrics Settings
+http.host: "0.0.0.0"
+http.port: 9600
+
+# Monitoring
+xpack.monitoring.enabled: true
+xpack.monitoring.elasticsearch.hosts: ["http://es01:9200"]
+xpack.monitoring.elasticsearch.username: elastic
+xpack.monitoring.elasticsearch.password: "${ELASTIC_PASSWORD:}"
+
+# Log Settings
+log.level: info
+path.logs: /usr/share/logstash/logs

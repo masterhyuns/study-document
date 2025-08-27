@@ -25,6 +25,7 @@ services:
       - zookeeper
     ports:
       - "9092:9092"
+      - "29092:29092"
       - "19092:19092"
     environment:
       KAFKA_BROKER_ID: 1
@@ -58,6 +59,7 @@ services:
       - zookeeper
     ports:
       - "9093:9093"
+      - "29093:29093"
       - "19093:19093"
     environment:
       KAFKA_BROKER_ID: 2
@@ -91,6 +93,7 @@ services:
       - zookeeper
     ports:
       - "9094:9094"
+      - "29094:29094"
       - "19094:19094"
     environment:
       KAFKA_BROKER_ID: 3

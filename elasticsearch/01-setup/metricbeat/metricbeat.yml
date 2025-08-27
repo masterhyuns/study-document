@@ -1,0 +1,86 @@
+# Metricbeat Configuration
+# =========================
+
+# Modules Configuration
+metricbeat.modules:
+  # Elasticsearch Module
+  - module: elasticsearch
+    xpack.enabled: true
+    period: 10s
+    hosts: ["http://es01:9200"]
+    username: "elastic"
+    password: "${ELASTIC_PASSWORD:}"
+    
+  # Docker Module
+  - module: docker
+    metricsets:
+      - container
+      - cpu
+      - diskio
+      - healthcheck
+      - info
+      - memory
+      - network
+    hosts: ["unix:///var/run/docker.sock"]
+    period: 10s
+    
+  # System Module
+  - module: system
+    period: 10s
+    metricsets:
+      - cpu
+      - load
+      - memory
+      - network
+      - process
+      - process_summary
+      - socket_summary
+      - filesystem
+      - fsstat
+      - diskio
+    processors:
+      - add_host_metadata:
+          when.not.contains:
+            tags: forwarded
+    
+# Output Configuration
+output.elasticsearch:
+  hosts: ["es01:9200", "es02:9200", "es03:9200"]
+  username: "${ELASTICSEARCH_USERNAME:elastic}"
+  password: "${ELASTICSEARCH_PASSWORD:}"
+  
+# Kibana Configuration
+setup.kibana:
+  host: "kibana:5601"
+  username: "${ELASTICSEARCH_USERNAME:elastic}"
+  password: "${ELASTICSEARCH_PASSWORD:}"
+
+# Dashboard Setup
+setup.dashboards.enabled: true
+setup.dashboards.index: "metricbeat-*"
+
+# Index Template Settings
+setup.template.name: "metricbeat"
+setup.template.pattern: "metricbeat-*"
+setup.template.settings:
+  index.number_of_shards: 1
+  index.number_of_replicas: 1
+  
+# ILM (Index Lifecycle Management)
+setup.ilm.enabled: true
+setup.ilm.rollover_alias: "metricbeat"
+setup.ilm.pattern: "{now/d}-000001"
+
+# Logging
+logging.level: info
+logging.to_files: true
+logging.files:
+  path: /usr/share/metricbeat/logs
+  name: metricbeat
+  keepfiles: 7
+  permissions: 0644
+
+# Monitoring
+monitoring.enabled: true
+monitoring.elasticsearch:
+  hosts: ["es01:9200"]
