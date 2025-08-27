@@ -1,0 +1,31 @@
+{
+  "name": "kafka-producer-examples",
+  "version": "1.0.0",
+  "description": "Kafka Producer 학습 예제",
+  "main": "basic-producer.js",
+  "type": "module",
+  "scripts": {
+    "start": "node basic-producer.js",
+    "basic": "node basic-producer.js",
+    "advanced": "node advanced/batch-producer.js",
+    "transaction": "node advanced/transaction-producer.js",
+    "performance": "node advanced/performance-producer.js"
+  },
+  "dependencies": {
+    "kafkajs": "^2.2.4",
+    "uuid": "^9.0.1",
+    "dotenv": "^16.3.1",
+    "winston": "^3.11.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.8.0"
+  },
+  "keywords": [
+    "kafka",
+    "producer",
+    "streaming",
+    "event-driven"
+  ],
+  "author": "",
+  "license": "MIT"
+}

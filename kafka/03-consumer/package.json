@@ -1,0 +1,31 @@
+{
+  "name": "kafka-consumer-examples",
+  "version": "1.0.0",
+  "description": "Kafka Consumer 학습 예제",
+  "main": "basic-consumer.js",
+  "type": "module",
+  "scripts": {
+    "start": "node basic-consumer.js",
+    "basic": "node basic-consumer.js",
+    "group": "node consumer-group.js",
+    "batch": "node batch-consumer.js",
+    "offset": "node offset-management.js"
+  },
+  "dependencies": {
+    "kafkajs": "^2.2.4",
+    "uuid": "^9.0.1",
+    "dotenv": "^16.3.1",
+    "winston": "^3.11.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.8.0"
+  },
+  "keywords": [
+    "kafka",
+    "consumer",
+    "streaming",
+    "event-driven"
+  ],
+  "author": "",
+  "license": "MIT"
+}
